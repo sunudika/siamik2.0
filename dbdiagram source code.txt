@@ -6,6 +6,7 @@ Table mahasiswa as M {
   npm int [pk, increment] // auto-increment
   nama varchar
   alamat text
+  jurusan_id int [ref: > J.id]
   fakultas_id int [ref: > F.id]
   dosen_wali_nip int [ref: > D.nip]
   ip_matkul_id float 
@@ -15,7 +16,6 @@ Table mahasiswa as M {
 Table dosen as D {
   nip int [pk, increment]
   nama varchar
-  gambar__profil_url varchar
   jurusan_id int [ref: > J.id]
 }
 
@@ -26,7 +26,7 @@ Table mata_kuliah as MK {
   SKS int
   ip_matkul_id int [ref: > IPM.id]
   jurusan_id int [ref: > J.id]
-  dosen varchar [ref: > D.nip]
+  dosen_nip varchar [ref: > D.nip]
 }
 
 Table jurusan as J {
