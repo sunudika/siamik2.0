@@ -8,6 +8,7 @@ Table mahasiswa as M {
   alamat text
   fakultas_id int [ref: > F.id]
   dosen_wali_nip int [ref: > D.nip]
+  ip float [ref: < IPM.total]
 }
 
 
@@ -40,6 +41,6 @@ Table fakultas as F {
 
 Table ip_matkul as IPM {
   id int [pk, increment]
-  matkul_id int
+  matkul_id int [ref: > MK.id]
   total float
 }
