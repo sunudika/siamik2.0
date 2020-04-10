@@ -7,10 +7,7 @@ Table mahasiswa as M {
   nama varchar
   alamat text
   gambar_profil_url varchar
-  jurusan_id int [ref: > J.id]
   fakultas_id int [ref: > F.id]
-  ipk_id int [ref: > IPK.id]
-  ips_id int [ref: < IPS.id]
   dosen_wali_nip int [ref: > D.nip]
 }
 
@@ -19,7 +16,6 @@ Table dosen as D {
   nip int [pk, increment]
   nama varchar
   gambar__profil_url varchar
-  fakultas_id int [ref: > F.id]
   jurusan_id int [ref: > J.id]
 }
 
@@ -33,19 +29,6 @@ Table mata_kuliah as MK {
   dosen varchar [ref: > D.nip]
 }
 
-Table kelas as K {
-  id int [pk, increment]
-  waktu varchar
-}
-
-Table pengumuman as P {
-  id int [pk, increment]
-  judul text
-  konten text
-  gambar_kontent_url varchar
-  tanggal_posting date
-}
-
 Table jurusan as J {
   id int [pk, increment]
   nama varchar
@@ -57,20 +40,12 @@ Table fakultas as F {
   nama varchar
 }
 
-Table ipk as IPK {
-  id int [pk, increment]
-  total float
-}
-
-Table ips as IPS {
-  id int [pk, increment]
-  semester int
-  total float
-}
-
 Table ip_matkul as IPM {
   id int [pk, increment]
   matkul_id int
   total float
 }
 
+
+
+Ref: "dosen"."nip" < "dosen"."nama"
