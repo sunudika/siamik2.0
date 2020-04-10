@@ -9,7 +9,7 @@ Table mahasiswa as M {
   jurusan_id int [ref: > J.id]
   fakultas_id int [ref: > F.id]
   dosen_wali_nip int [ref: > D.nip]
-  ip_matkul_id float [ref: < IPM.total]
+  ip_matkul_id float 
 }
 
 
@@ -24,7 +24,7 @@ Table mata_kuliah as MK {
   waktu_ambil date
   nama varchar
   SKS int
-  ip_matkul int [ref: > IPM.id]
+  ip_matkul_id int [ref: > IPM.id]
   jurusan_id int [ref: > J.id]
   dosen_nip varchar [ref: > D.nip]
 }
@@ -43,5 +43,5 @@ Table fakultas as F {
 Table ip_matkul as IPM {
   id int [pk, increment]
   matkul_id int [ref: > MK.id]
-  total float
+  total float [ref: > M.ip_matkul_id]
 }
