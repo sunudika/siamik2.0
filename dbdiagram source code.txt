@@ -11,8 +11,6 @@ Table mahasiswa as M {
   fakultas_id int [ref: > F.id]
   ipk_id int [ref: > IPK.id]
   ips_id int [ref: < IPS.id]
-  ip_matkul int [ref: < IPM.id]
-  dosen_nip int [ref: > D.nip]
   dosen_wali_nip int [ref: > D.nip]
 }
 
@@ -27,8 +25,12 @@ Table dosen as D {
 
 Table mata_kuliah as MK {
   id int [pk, increment]
+  waktu_ambil date
   nama varchar
+  SKS int
+  ip_matkul int [ref: > IPM.id]
   jurusan_id int [ref: > J.id]
+  dosen varchar [ref: > D.nip]
 }
 
 Table kelas as K {
