@@ -6,7 +6,6 @@ Table mahasiswa as M {
   npm int [pk, increment] // auto-increment
   nama varchar
   alamat text
-  gambar_profil_url varchar
   fakultas_id int [ref: > F.id]
   dosen_wali_nip int [ref: > D.nip]
 }
