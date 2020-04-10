@@ -16,7 +16,6 @@ Table mahasiswa as M {
 Table dosen as D {
   nip int [pk, increment]
   nama varchar
-  gambar__profil_url varchar
   jurusan_id int [ref: > J.id]
 }
 
@@ -43,10 +42,6 @@ Table fakultas as F {
 
 Table ip_matkul as IPM {
   id int [pk, increment]
-  matkul_id int
+  matkul_id int [ref: > MK.id]
   total float
 }
-
-
-
-Ref: "dosen"."nip" < "dosen"."nama"
